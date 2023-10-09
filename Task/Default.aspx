@@ -53,40 +53,6 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    <!-- <tr>
-                                                        <td><input type="checkbox"  /></td>
-                                                        <td class="muted-text">item 1</td>
-                                                       
-                                                        <td class="muted-text">
-                                                            <input  style="text-align:center;" value="1" type="text">
-                                                        </td>
-                                                        <td class="muted-text"><input  style="text-align:center;" value="1" type="text"></td>
-                                                        <td class="text-primary"><span>0.00</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="checkbox" /></td>
-                                                        <td class="muted-text">item 2</td>
-                                                       
-                                                       
-                                                        <td class="muted-text">
-                                                            <input  style="text-align:center;" value="1" type="text">
-                                                        </td>
-                                                        <td class="muted-text"><input style="text-align:center;" value="1" type="text"></td>
-                                                        <td class="text-primary"> <span>0.00</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="checkbox" /></td>
-                                                        <td class="muted-text">item 3</td>
-                                                       
-                                                        
-                                                        <td class="muted-text">
-                                                            <input  style="text-align:center;"  value="1" type="text"  >
-                                                        </td>
-                                                        <td class="muted-text"><input  style="text-align:center;" value="1" type="text"></td>
-                                                        <td class="text-primary"><span>0.00</span></td>
-                                                    </tr>
-                                                     
-                                                      -->
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
