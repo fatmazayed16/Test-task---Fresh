@@ -30,19 +30,17 @@
                                         
                                             <button class="btn btn-primary btn-sl-lg mr-3">Save bill in DB</button>
                                          
-                                            <button id="delete-button" class="btn btn-info  ">Delete selected rows</button>
+                                            <button id="delete-button" class="btn btn-info  ">Delete selected rows</button>   
                                     </div>
                                     <span id="add-item" class="material-symbols-outlined col-1 align-self-center btn">
-                                        +
+                                        add
                                         </span>
-
                                 </div>
-                     
-                                 
+
                                 <div class="row mt-5">
                                     <div class="col-lg-12">
-                                        <div class="create-bill-table table-responsive">
-                                            <table id="bill-table" class="table bill-details-table" style="min-width: 620px;">
+                                        <div class="create-invoice-table table-responsive">
+                                            <table id="invoice-table" class="table invoice-details-table" style="min-width: 620px;">
                                                 <thead>
                                                     <tr>
                                                         <th>Manage</th>
@@ -95,7 +93,7 @@
                                                         <td></td>
                                                         <td>Net</td>
                                                         <td class="text-primary">
-                                                            <span id="net-cell">0.000</span>
+                                                             <span id='net-cell'>0.000</span>
                                                              <input type="hidden" id="net-cell-value" name="net-value" value=""/>
                                                         </td>
                                                     </tr>
@@ -114,19 +112,19 @@
             <!-- #/ container -->
         </div>
   <script>
-        const table = document.getElementById('bill-table');
+      const table = document.getElementById('invoice-table');
 
-        let x = 1;
+      let x = 1;
 
-        var addItemSpan = document.getElementById("add-item");
+      var addItemSpan = document.getElementById("add-item");
 
-        addItemSpan.addEventListener("click", function () {
+      addItemSpan.addEventListener("click", function () {
 
-            var tableBody = document.querySelector("#bill-table tbody");
+          var tableBody = document.querySelector("#invoice-table tbody");
 
-            var newRow = document.createElement("tr");
+          var newRow = document.createElement("tr");
 
-            newRow.innerHTML = `
+          newRow.innerHTML = `
                 <td><input type="checkbox"></td>
                 <td class="muted-text">Item ${x}</td>
                 <td class="muted-text">
@@ -137,67 +135,62 @@
                 </td>
                 <td class="text-primary"><span>0.00</span></td>
             `;
-            x++
-            tableBody.insertBefore(newRow, tableBody.lastElementChild);
-        });
+          x++
+          tableBody.insertBefore(newRow, tableBody.lastElementChild);
+      });
 
-        table.addEventListener('input', function (event) {
-            const target = event.target;
-            if (target.tagName === 'INPUT') {
-                calculateRowTotal(target);
-            }
-        });
+      table.addEventListener('input', function (event) {
+          const target = event.target;
+          if (target.tagName === 'INPUT') {
+              calculateRowTotal(target);
+          }
+      });
 
-        function calculateRowTotal(input) {
-            const row = input.closest('tr');
-            const quantity = parseFloat(row.cells[2].querySelector('input').value);
-            const unitPrice = parseFloat(row.cells[3].querySelector('input').value);
-            const total = quantity * unitPrice;
+      function calculateRowTotal(input) {
+          const row = input.closest('tr');
+          const quantity = parseFloat(row.cells[2].querySelector('input').value);
+          const unitPrice = parseFloat(row.cells[3].querySelector('input').value);
+          const total = quantity * unitPrice;
 
-            if (!isNaN(total))
-                row.cells[4].querySelector('span').textContent = total.toFixed(2);
+          if (!isNaN(total))
+              row.cells[4].querySelector('span').textContent = total.toFixed(2);
 
-            calculateNet();
-        }
+          calculateNet();
+      }
 
-        function calculateNet() {
-            const rows = table.querySelectorAll('tbody tr');
-            const netCell = document.getElementById('net-cell');
-            const netCellValue = document.getElementById('net-cell-value')
+      function calculateNet() {
+          const rows = table.querySelectorAll('tbody tr');
+          const netCell = document.getElementById('net-cell');
+          const netCellValue = document.getElementById('net-cell-value')
 
-            let netTotal = 0;
+          let netTotal = 0;
 
-            for (let i = 0; i < rows.length - 1; i++) {
-                const total = parseFloat(rows[i].cells[4].querySelector('span').textContent);
+          for (let i = 0; i < rows.length - 1; i++) {
+              const total = parseFloat(rows[i].cells[4].querySelector('span').textContent);
 
-                if (!isNaN(total))
-                    netTotal += total;
-            }
+              if (!isNaN(total))
+                  netTotal += total;
+          }
 
-            netCell.textContent = netTotal.toFixed(3);
-            netCellValue.value = netCell.textContent
-        }
+          netCell.textContent = netTotal.toFixed(3);
+          netCellValue.value = netCell.textContent
+      }
 
-        const deleteButton = document.getElementById('delete-button');
-        deleteButton.addEventListener('click', deleteSelectedRows);
+      const deleteButton = document.getElementById('delete-button');
+      deleteButton.addEventListener('click', deleteSelectedRows);
 
-        function deleteSelectedRows(event) {
-            event.preventDefault();
+      function deleteSelectedRows(event) {
+          event.preventDefault();
 
-            const rows = table.querySelectorAll('tbody tr');
+          const rows = table.querySelectorAll('tbody tr');
 
-            for (let i = rows.length - 2; i >= 0; i--) {
-                const checkbox = rows[i].querySelector('input[type="checkbox"]');
-                if (checkbox.checked) {
-                    table.deleteRow(i + 1);
-                }
-            }
-            calculateNet();
-        }
-    </script>     
-
-
-
+          for (let i = rows.length - 2; i >= 0; i--) {
+              const checkbox = rows[i].querySelector('input[type="checkbox"]');
+              if (checkbox.checked) {
+                  table.deleteRow(i + 1);
+              }
+          }
+          calculateNet();
+      }
+    </script>    
     </asp:Content>
-        
-        

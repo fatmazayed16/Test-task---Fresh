@@ -9,11 +9,11 @@ namespace Test_Task
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Bill>()
+            modelBuilder.Entity<Invoice>()
                         .HasKey(e => e.Id)
-                        .HasMany(e => e.Item).WithRequired(e => e.Bill).HasForeignKey(e => e.BillId);
+                        .HasMany(e => e.Items).WithRequired(e => e.Invoice).HasForeignKey(e => e.InvoiceId);
 
-            modelBuilder.Entity<Item>()
+            modelBuilder.Entity<Items>()
                         .HasKey(e => e.Id);
         }
     }

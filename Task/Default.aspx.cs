@@ -10,7 +10,8 @@ namespace Test_Task
 {
     public partial class Default : System.Web.UI.Page
     {
-        private readonly IBillUnitOfWork _unitOfWork = new BillUnitOfWork();
+        private readonly IInvoiceUnitOfWork _unitOfWork = new InvoiceUnitOfWork();
+
         protected async Task Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -21,33 +22,33 @@ namespace Test_Task
         {
             if (Request.Form[$"net-value"] != string.Empty)
             {
-                List<Item> items = new List<Item>();
+                List<Items> items = new List<Items>();
                 List<string> keys = Request.Form.AllKeys.Where(key => key.Contains("Quantity")).ToList();
 
                 foreach (string key in keys)
                 {
                     string rowIndex = key.Replace("Quantity", "");
-                    Item item = new Item()
+                    Items item = new Items()
                     {
                         Id = Guid.NewGuid(),
                         Name = $"Item {rowIndex}",
                         Quantity = Request.Form[key],
-                        Unit_Price = Request.Form[$"UnitPrice{rowIndex}"]
+                        UnitPrice = Request.Form[$"UnitPrice{rowIndex}"]
                     };
 
                     items.Add(item);
                 }
 
-                 Bill bill = new Bill()
+                Invoice invoice = new Invoice()
                 {
-                    Item = items,
+                    Items = items,
                     Total = Request.Form[$"net-value"]
                 };
 
-                await SaveBillResultInDb(bill);
+                await SaveBillResultInDb(invoice);
             }
         }
 
-        private async Task SaveBillResultInDb(Bill bill) => await _unitOfWork.Create(bill);
+        private async Task SaveBillResultInDb(Invoice invoice) => await _unitOfWork.Create(invoice);
     }
 }
