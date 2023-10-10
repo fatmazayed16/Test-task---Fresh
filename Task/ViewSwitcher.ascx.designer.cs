@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Test_Task {
+namespace TestTask {
     
     
     public partial class ViewSwitcher {

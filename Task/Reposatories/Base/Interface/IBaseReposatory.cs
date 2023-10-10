@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
+using System.Data.Entity;
+using TestTask;
 
-namespace Test_Task
+namespace TestTask
 {
-    internal interface IBaseReposatory<TEntity> where TEntity : BaseEntity
+    public interface IBaseReposatory<TEntity> where TEntity : BaseEntity
     {
         Task Add(TEntity entity);
 

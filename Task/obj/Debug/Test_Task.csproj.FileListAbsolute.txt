@@ -75,5 +75,5 @@ C:\Users\Mass\source\repos\task\Task\bin\EntityFramework.dll
 C:\Users\Mass\source\repos\task\Task\bin\EntityFramework.SqlServer.dll
 C:\Users\Mass\source\repos\task\Task\bin\EntityFramework.xml
 C:\Users\Mass\source\repos\task\Task\bin\EntityFramework.SqlServer.xml
-C:\Users\Mass\source\repos\Task\Task\obj\Debug\Test_Task.Migrations.Invoice.resources
 C:\Users\Mass\source\repos\Task\Task\obj\Debug\Test_Task.csproj.GenerateResource.cache
+C:\Users\Mass\source\repos\task\Task\obj\Debug\TestTask.Migrations.Invoice.resources

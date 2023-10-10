@@ -5,20 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Test_Task
+namespace TestTask
 {
     public class BaseUnitOfWork<TEntity> : IBaseUnitOfWork<TEntity> where TEntity : BaseEntity
     {
         private readonly IBaseReposatory<TEntity> _reposatory;
+
         protected BaseUnitOfWork() => _reposatory = BaseReposatory<TEntity>.BaseReposatoryInstance;
 
+        public virtual async Task<IEnumerable<TEntity>> Read() => await _reposatory.Get();
+        public virtual async Task<TEntity> Read(Guid id) => await _reposatory.Get(id);
 
         public async Task Create(TEntity entity)
         {
             DbContextTransaction transaction = await _reposatory.GetTransaction();
+
             try
             {
                 await _reposatory.Add(entity);
+
+                transaction.Commit();
             }
             catch
             {
@@ -26,24 +32,36 @@ namespace Test_Task
             }
         }
 
-        public Task Delete(Guid id)
+        public async Task Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbContextTransaction transaction = await _reposatory.GetTransaction();
+
+            try
+            {
+                await _reposatory.Update(entity);
+
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+            }
         }
 
-        public Task<IEnumerable<TEntity>> Read()
+        public async Task Delete(Guid id)
         {
-            throw new NotImplementedException();
-        }
+            DbContextTransaction transaction = await _reposatory.GetTransaction();
 
-        public Task<TEntity> Read(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                await _reposatory.Remove(id);
 
-        public Task Update(TEntity entity)
-        {
-            throw new NotImplementedException();
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+            }
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Test_Task.Default" %>
+﻿<%@ Page Async="true"  Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TestTask.Default" %>
      
 <asp:Content ContentPlaceHolderID ="ContentPlaceHolder1" ID="Content1" runat="server">
 
 <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+       <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col p-md-0">
@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-11">
                                         
                                             <button class="btn btn-primary btn-sl-lg mr-3">Save bill in DB</button>
                                          
@@ -52,15 +52,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
                                                     <!-- <tr>
                                                         <td><input type="checkbox"  /></td>
                                                         <td class="muted-text">item 1</td>
                                                        
                                                         <td class="muted-text">
-                                                            <input  style="text-align:center;" value="1" type="text">
+                                                            <input  style="text-align:center;" value="0" type="text">
                                                         </td>
-                                                        <td class="muted-text"><input  style="text-align:center;" value="1" type="text"></td>
+                                                        <td class="muted-text"><input  style="text-align:center;" value="0" type="text"></td>
                                                         <td class="text-primary"><span>0.00</span></td>
                                                     </tr>
                                                     <tr>
@@ -69,9 +68,9 @@
                                                        
                                                        
                                                         <td class="muted-text">
-                                                            <input  style="text-align:center;" value="1" type="text">
+                                                            <input  style="text-align:center;" value="0" type="text">
                                                         </td>
-                                                        <td class="muted-text"><input style="text-align:center;" value="1" type="text"></td>
+                                                        <td class="muted-text"><input style="text-align:center;" value="0" type="text"></td>
                                                         <td class="text-primary"> <span>0.00</span></td>
                                                     </tr>
                                                     <tr>
@@ -80,12 +79,11 @@
                                                        
                                                         
                                                         <td class="muted-text">
-                                                            <input  style="text-align:center;"  value="1" type="text"  >
+                                                            <input  style="text-align:center;"  value="0" type="text"  >
                                                         </td>
-                                                        <td class="muted-text"><input  style="text-align:center;" value="1" type="text"></td>
+                                                        <td class="muted-text"><input  style="text-align:center;" value="0" type="text"></td>
                                                         <td class="text-primary"><span>0.00</span></td>
                                                     </tr>
-                                                     
                                                       -->
                                                     <tr>
                                                         <td></td>
@@ -93,12 +91,10 @@
                                                         <td></td>
                                                         <td>Net</td>
                                                         <td class="text-primary">
-                                                             <span id='net-cell'>0.000</span>
+                                                            <span id='net-cell'>0.000</span>
                                                              <input type="hidden" id="net-cell-value" name="net-value" value=""/>
                                                         </td>
                                                     </tr>
-                                                     
-                                                     
                                                 </tbody>
                                             </table>
                                         </div>
@@ -111,20 +107,20 @@
             </div>
             <!-- #/ container -->
         </div>
-  <script>
-      const table = document.getElementById('invoice-table');
+    <script>
+        const table = document.getElementById('invoice-table');
 
-      let x = 1;
+        let x = 1;
 
-      var addItemSpan = document.getElementById("add-item");
+        var addItemSpan = document.getElementById("add-item");
 
-      addItemSpan.addEventListener("click", function () {
+        addItemSpan.addEventListener("click", function () {
 
-          var tableBody = document.querySelector("#invoice-table tbody");
+            var tableBody = document.querySelector("#invoice-table tbody");
 
-          var newRow = document.createElement("tr");
+            var newRow = document.createElement("tr");
 
-          newRow.innerHTML = `
+            newRow.innerHTML = `
                 <td><input type="checkbox"></td>
                 <td class="muted-text">Item ${x}</td>
                 <td class="muted-text">
@@ -135,62 +131,62 @@
                 </td>
                 <td class="text-primary"><span>0.00</span></td>
             `;
-          x++
-          tableBody.insertBefore(newRow, tableBody.lastElementChild);
-      });
+            x++
+            tableBody.insertBefore(newRow, tableBody.lastElementChild);
+        });
 
-      table.addEventListener('input', function (event) {
-          const target = event.target;
-          if (target.tagName === 'INPUT') {
-              calculateRowTotal(target);
-          }
-      });
+        table.addEventListener('input', function (event) {
+            const target = event.target;
+            if (target.tagName === 'INPUT') {
+                calculateRowTotal(target);
+            }
+        });
 
-      function calculateRowTotal(input) {
-          const row = input.closest('tr');
-          const quantity = parseFloat(row.cells[2].querySelector('input').value);
-          const unitPrice = parseFloat(row.cells[3].querySelector('input').value);
-          const total = quantity * unitPrice;
+        function calculateRowTotal(input) {
+            const row = input.closest('tr');
+            const quantity = parseFloat(row.cells[2].querySelector('input').value);
+            const unitPrice = parseFloat(row.cells[3].querySelector('input').value);
+            const total = quantity * unitPrice;
 
-          if (!isNaN(total))
-              row.cells[4].querySelector('span').textContent = total.toFixed(2);
+            if (!isNaN(total))
+                row.cells[4].querySelector('span').textContent = total.toFixed(2);
 
-          calculateNet();
-      }
+            calculateNet();
+        }
 
-      function calculateNet() {
-          const rows = table.querySelectorAll('tbody tr');
-          const netCell = document.getElementById('net-cell');
-          const netCellValue = document.getElementById('net-cell-value')
+        function calculateNet() {
+            const rows = table.querySelectorAll('tbody tr');
+            const netCell = document.getElementById('net-cell');
+            const netCellValue = document.getElementById('net-cell-value')
 
-          let netTotal = 0;
+            let netTotal = 0;
 
-          for (let i = 0; i < rows.length - 1; i++) {
-              const total = parseFloat(rows[i].cells[4].querySelector('span').textContent);
+            for (let i = 0; i < rows.length - 1; i++) {
+                const total = parseFloat(rows[i].cells[4].querySelector('span').textContent);
 
-              if (!isNaN(total))
-                  netTotal += total;
-          }
+                if (!isNaN(total))
+                    netTotal += total;
+            }
 
-          netCell.textContent = netTotal.toFixed(3);
-          netCellValue.value = netCell.textContent
-      }
+            netCell.textContent = netTotal.toFixed(3);
+            netCellValue.value = netCell.textContent
+        }
 
-      const deleteButton = document.getElementById('delete-button');
-      deleteButton.addEventListener('click', deleteSelectedRows);
+        const deleteButton = document.getElementById('delete-button');
+        deleteButton.addEventListener('click', deleteSelectedRows);
 
-      function deleteSelectedRows(event) {
-          event.preventDefault();
+        function deleteSelectedRows(event) {
+            event.preventDefault();
 
-          const rows = table.querySelectorAll('tbody tr');
+            const rows = table.querySelectorAll('tbody tr');
 
-          for (let i = rows.length - 2; i >= 0; i--) {
-              const checkbox = rows[i].querySelector('input[type="checkbox"]');
-              if (checkbox.checked) {
-                  table.deleteRow(i + 1);
-              }
-          }
-          calculateNet();
-      }
-    </script>    
-    </asp:Content>
+            for (let i = rows.length - 2; i >= 0; i--) {
+                const checkbox = rows[i].querySelector('input[type="checkbox"]');
+                if (checkbox.checked) {
+                    table.deleteRow(i + 1);
+                }
+            }
+            calculateNet();
+        }
+    </script>
+</asp:Content>

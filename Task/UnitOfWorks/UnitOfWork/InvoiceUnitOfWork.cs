@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Test_Task
+namespace TestTask
 {
     public class InvoiceUnitOfWork : BaseUnitOfWork<Invoice> , IInvoiceUnitOfWork { }
 }

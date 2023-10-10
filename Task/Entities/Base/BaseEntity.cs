@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Test_Task
+namespace TestTask
 {
     public class BaseEntity
     {

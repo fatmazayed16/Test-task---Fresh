@@ -1,22 +1,21 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Test_Task.MasterPage" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="TestTask.MasterPage" %>
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
+<html>
+<head runat="server">
+ <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>HTML Template</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <!-- Custom Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
-
 <body>
-    
-    <!--*******************
+    <form id="form1" runat="server">
+          <!--*******************
         Preloader start
     ********************-->
     <div id="preloader">
@@ -62,13 +61,11 @@
                             <div class="drop-down animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <div class="header-search" id="header-search">
-                                        <form action="#">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" placeholder="Search">
                                                 <div class="input-group-append"><span class="input-group-text"><i class="icon-magnifier"></i></span>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -745,11 +742,10 @@
             Sidebar end
         ***********************************-->
 
- <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                       </asp:ContentPlaceHolder>
 
-        <!--**********************************
+         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
@@ -1031,7 +1027,7 @@
                                             <div class="media">
                                                 <div class="media-body">
                                                     <p>2 days ago</p>
-                                                    <h6 class="mt-0 mb-0"><a href="" class="text-primary">Elon Mask</a> invited you on an <a href="javascript:void()" class="text-primary">Event</a></h6>
+                                                    <h6 class="mt-0 mb-0"><a href="#" class="text-primary">Elon Mask</a> invited you on an <a href="javascript:void()" class="text-primary">Event</a></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -1042,7 +1038,7 @@
                                             <div class="media">
                                                 <div class="media-body">
                                                     <p>3 days ago</p>
-                                                    <h6 class="mt-0 mb-0"><a href="" class="text-primary">Mark Jukarbarg</a> invited you on <a href="javascript:void()" class="text-primary">Facebook</a></h6>
+                                                    <h6 class="mt-0 mb-0"><a href="#" class="text-primary">Mark Jukarbarg</a> invited you on <a href="javascript:void()" class="text-primary">Facebook</a></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -1328,11 +1324,11 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="../../assets/plugins/common/common.min.js"></script>
-    <script src="../js/custom.min.js"></script>
-    <script src="../js/settings.js"></script>
-    <script src="../js/gleek.js"></script>
-    <script src="../js/styleSwitcher.js"></script>
+    <script src="assets/plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+    </form>
 </body>
-
 </html>

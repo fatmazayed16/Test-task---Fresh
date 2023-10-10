@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Test_Task
+namespace TestTask
 {
     public class BaseReposatorySitting<TEntity> : BaseReposatory<TEntity>
         , IBaseReposatorySetting<TEntity> where TEntity : BaseEntitySitting

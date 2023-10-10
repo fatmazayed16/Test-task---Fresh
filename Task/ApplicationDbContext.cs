@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace Test_Task
+namespace TestTask
 {
     public class ApplicationDbContext : DbContext
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Test_Task
+namespace TestTask
 {
     public interface IBaseUnitOfWork<TEntity> where TEntity : BaseEntity
     {

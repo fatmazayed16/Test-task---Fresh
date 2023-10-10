@@ -1,18 +1,18 @@
-﻿namespace Test_Task.Migrations
+﻿namespace TestTask.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Test_Task.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TestTask.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Test_Task.ApplicationDbContext context)
+        protected override void Seed(TestTask.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

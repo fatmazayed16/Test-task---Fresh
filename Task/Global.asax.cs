@@ -7,7 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace Test_Task
+namespace TestTask
 {
     public class Global : HttpApplication
     {

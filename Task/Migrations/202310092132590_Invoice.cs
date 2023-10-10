@@ -1,4 +1,4 @@
-﻿namespace Test_Task.Migrations
+﻿namespace TestTask.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

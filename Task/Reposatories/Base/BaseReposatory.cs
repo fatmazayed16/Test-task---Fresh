@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Test_Task
+namespace TestTask
 {
     public class BaseReposatory<TEntity> : IBaseReposatory<TEntity> where TEntity : BaseEntity
     {

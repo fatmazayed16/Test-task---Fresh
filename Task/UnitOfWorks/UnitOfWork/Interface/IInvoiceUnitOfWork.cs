@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test_Task
+namespace TestTask
 { 
     public interface IInvoiceUnitOfWork : IBaseUnitOfWork<Invoice> { }
 }

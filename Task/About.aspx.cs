@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Test_Task
+namespace TestTask
 {
     public partial class About : Page
     {
