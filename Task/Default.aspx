@@ -1,11 +1,8 @@
-﻿<%@ Page Async="true"  Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TestTask.Default" %>
+<%@ Page Async="true"  Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TestTask.Default" %>
      
 <asp:Content ContentPlaceHolderID ="ContentPlaceHolder1" ID="Content1" runat="server">
 
-<!--**********************************
-            Content body start
-        ***********************************-->
-       <div class="content-body">
+            <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col p-md-0">
@@ -52,7 +49,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-<<<<<<< HEAD
                                                     <!-- <tr>
                                                         <td><input type="checkbox"  /></td>
                                                         <td class="muted-text">item 1</td>
@@ -86,9 +82,6 @@
                                                         <td class="text-primary"><span>0.00</span></td>
                                                     </tr>
                                                       -->
-=======
-
->>>>>>> 8b60fd8816149979dd51ead8eb48b6a59acb4499
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -184,7 +177,6 @@
 
             const rows = table.querySelectorAll('tbody tr');
 
-<<<<<<< HEAD
             for (let i = rows.length - 2; i >= 0; i--) {
                 const checkbox = rows[i].querySelector('input[type="checkbox"]');
                 if (checkbox.checked) {
@@ -195,15 +187,4 @@
         }
     </script>
 </asp:Content>
-=======
-          for (let i = rows.length - 2; i >= 0; i--) {
-              const checkbox = rows[i].querySelector('input[type="checkbox"]');
-              if (checkbox.checked) {
-                  table.deleteRow(i + 1);
-              }
-          }
-          calculateNet();
-      }
-    </script>    
-    </asp:Content>
->>>>>>> 8b60fd8816149979dd51ead8eb48b6a59acb4499
+
